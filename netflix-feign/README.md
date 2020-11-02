@@ -1,6 +1,6 @@
 **Spring Cloud 服务提供与调用示例**
 
-* netflix-eureka-single：Eureka 注册中心服务
+* netflix-eureka：Eureka 注册中心服务
 * spring-cloud-producer：远程调用提供服务
 * spring-cloud-consumer：远程调用消费服务
 
@@ -8,14 +8,14 @@
 
 **验证过程**
 
-1. 启动 netflix-eureka-single SpringCluodNetflixApplication
+1. 启动 netflix-eureka SpringCluodNetflixApplication
 2. 启动 spring-cloud-producer SpringCluodNetflixApplication
 3. 启动 spring-cloud-consumer SpringCluodNetflixApplication
 4. 调用 GET http://localhost:9001/hello/assad
 
 **负载均衡测试**
 
-1. 启动 netflix-eureka-single
+1. 启动 netflix-eureka
 
 2. 启动 2 个 spring-cloud-producer，分别的 application.properties 配置如下：
 
