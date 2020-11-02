@@ -11,7 +11,7 @@
     <groupId>site.assad</groupId>
     <artifactId>netflix-eureka-single</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-netflix</name>
+    <name>spring-cloud-netflix-eureka</name>
     <description>Spring Cloud Netflix Eureka</description>
 
     <properties>

@@ -11,7 +11,7 @@
     <groupId>site.assad</groupId>
     <artifactId>spring-cloud-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-netflix</name>
+    <name>spring-cloud-netflix-consumer</name>
     <description>Spring Cloud Consumer Sample</description>
 
     <properties>

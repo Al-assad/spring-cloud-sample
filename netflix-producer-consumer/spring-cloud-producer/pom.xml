@@ -11,7 +11,7 @@
     <groupId>site.assad</groupId>
     <artifactId>spring-cloud-producer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-netflix</name>
+    <name>spring-cloud-netflix-producer</name>
     <description>Spring Cloud Producer Sample</description>
 
     <properties>
