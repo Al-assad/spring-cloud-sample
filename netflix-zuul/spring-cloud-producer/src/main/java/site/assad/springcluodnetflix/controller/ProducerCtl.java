@@ -12,4 +12,9 @@ public class ProducerCtl {
         return "hello " + name + "，this is first message";
     }
     
+    @RequestMapping("/info")
+    public String getInfo(@RequestParam String token) {
+        return "hello world, token is " + token;
+    }
+    
 }
