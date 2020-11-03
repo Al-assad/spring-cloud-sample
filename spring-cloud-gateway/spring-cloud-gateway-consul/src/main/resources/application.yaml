@@ -1,0 +1,73 @@
+server:
+  port: 8080
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+spring:
+  application:
+    name: spring-cloud-gateway
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  cloud:
+    gateway:
+      # 开启服务发现
+      discovery:
+        locator:
+          enabled: true
+      # 路由配置
+      routes:
+        # /who/name/assad 转发到 /name/assad
+        - id: nameRoot
+          uri: lb://service-producer
+          predicates:
+            - Path=/who/**
+          filters:
+            - StripPrefix=1
+        # 增加请求参数
+        - id: add_request_parameter_route
+          uri: lb://service-producer
+          predicates:
+            - Method=GET
+          filters:
+            - AddRequestParameter=foo, bar
+        # /service-producer/hello 请求速率限制
+        - id: requestratelimiter_route
+          uri: lb://service-producer
+          predicates:
+            - Path=/who/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@userKeyResolver}"
+        # hystrix 熔断配置
+        - id: hystrix_route
+          uri: lb://service-producer
+          predicates:
+            - Path=/longtask**
+          filters:
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: api-gateway
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
