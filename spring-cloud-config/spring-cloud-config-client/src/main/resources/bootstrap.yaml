@@ -1,0 +1,5 @@
+spring.cloud.config:
+  name: assad-config
+  profile: dev
+  uri: http://localhost:8001/
+  label: master

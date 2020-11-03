@@ -1,7 +1,10 @@
-
-server.port: 8001
-spring:
-  application.name: spring-cloud-config-server
-  cloud.config.server:
-    git:
-    search-paths:
+spring.application.name: spring-cloud-config-client
+server.port: 8002
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"

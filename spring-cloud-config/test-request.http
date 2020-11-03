@@ -1,0 +1,12 @@
+### local 配置获取
+GET http://localhost:8001/assad-config/local
+### dev 配置获取
+GET http://localhost:8001/assad-config/dev
+### release 配置获取
+GET http://localhost:8001/assad-config-release.properties
+
+### 测试 client 获取配置
+GET http://localhost:8002/hello
+
+### 客户端刷新
+POST http://localhost:8002/actuator/refresh
