@@ -1,0 +1,52 @@
+server:
+  port: 9000
+
+spring:
+  profiles: g1c1
+  application:
+    name: stream-receiver-1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  # test-topic 主题绑定到 pati-dest 目的地的 group1 分组
+  cloud.stream:
+    # 消费者总实例
+    instanceCount: 2
+    # 当前实例索引号
+    instanceIndex: 0
+    bindings:
+      test-pati-topic:
+        destination: pati-dest
+        group: g1
+        # 开启分区消费
+        consumer:
+          partitioned: true
+
+
+---
+server:
+  port: 9001
+spring:
+  profiles: g1c2
+  application:
+    name: stream-receiver-1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  # test-topic 主题绑定到 group1 分组
+  cloud.stream:
+    # 消费者总实例
+    instanceCount: 2
+    # 当前实例索引号
+    instanceIndex: 1
+    bindings:
+      test-pati-topic:
+        destination: pati-dest
+        group: g1
+        # 开启分区消费
+        consumer:
+          partitioned: true

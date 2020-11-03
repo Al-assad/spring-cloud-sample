@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: stream-producer
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  # test-topic 主题绑定到 pati-dest 目的地
+  cloud.stream.bindings:
+    test-pati-topic:
+      destination: pati-dest
+      producer:
+        # 分区键的表达式规则，可以过 SpEL 指定
+        partitionKeyExpression: payload
+        # 发放分区数量
+        partitionCount: 2
