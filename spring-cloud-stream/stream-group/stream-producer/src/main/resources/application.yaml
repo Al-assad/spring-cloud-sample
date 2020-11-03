@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: stream-producer
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  # test-topic 主题绑定到 hello-dest 目的地
+  cloud.stream.bindings:
+    test-topic:
+      destination: hello-dest
+
+

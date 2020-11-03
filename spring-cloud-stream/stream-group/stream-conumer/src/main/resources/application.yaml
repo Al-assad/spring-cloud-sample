@@ -1,0 +1,71 @@
+server:
+  port: 9000
+
+spring:
+  profiles: g1c1
+  application:
+    name: stream-receiver-1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  # test-topic 主题绑定到 hello-dest 目的地的 group1 分组
+  cloud.stream.bindings:
+    test-topic:
+      destination: hello-dest
+      group: g1
+
+---
+server:
+  port: 9001
+spring:
+  profiles: g1c2
+  application:
+    name: stream-receiver-1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  # test-topic 主题绑定到 group1 分组
+  cloud.stream.bindings:
+    test-topic:
+      destination: hello-dest
+      group: g1
+
+---
+server:
+  port: 9002
+spring:
+  profiles: g2c1
+  application:
+    name: stream-receiver-2
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  # test-topic 主题绑定到 group2 分组
+  cloud.stream.bindings:
+    test-topic:
+      destination: hello-dest
+      group: g2
+
+---
+server:
+  port: 9003
+spring:
+  profiles: g2c2
+  application:
+    name: stream-receiver-2
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  # test-topic 主题绑定到 group2 分组
+  cloud.stream.bindings:
+    test-topic:
+      destination: hello-dest
+      group: g2
