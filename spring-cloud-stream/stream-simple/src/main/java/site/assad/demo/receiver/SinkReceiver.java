@@ -1,6 +1,7 @@
 package site.assad.demo.receiver;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.stereotype.Component;
 import site.assad.demo.topic.SampleTopic;
@@ -12,7 +13,7 @@ import site.assad.demo.topic.SampleTopic;
  * @since 2020/11/3
  */
 @Slf4j
-@Component
+@EnableBinding(SampleTopic.class)
 public class SinkReceiver {
     
     /**

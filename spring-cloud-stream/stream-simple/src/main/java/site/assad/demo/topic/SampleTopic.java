@@ -10,8 +10,8 @@ import org.springframework.messaging.SubscribableChannel;
  */
 public interface SampleTopic {
     
-    String OUTPUT = "sample-topic";
-    String INPUT = "sample-topic";
+    String OUTPUT = "hello-topic";
+    String INPUT = "hello-topic";
     
     /**
      * 发布消息通道
