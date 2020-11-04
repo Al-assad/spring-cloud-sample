@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: stream-delayed-message-sample
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        sample-topic-input:
+          group: ${spring.application.name}
+          destination: delayed-topic
+        sample-topic-output:
+          destination: delayed-topic
+      # 开启 RabbitMQ Exchange 延迟队列绑定
+      rabbit:
+        bindings:
+          sample-topic-input:
+            consumer:
+              delayed-exchange: true
+          sample-topic-output:
+            producer:
+              delayed-exchange: true
+
+server:
+  port: 8080
