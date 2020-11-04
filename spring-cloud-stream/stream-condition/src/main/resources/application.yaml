@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: stream-condition-sample
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        sample-topic-input:
+          group: ${spring.application.name}
+          destination: sample-topic
+        sample-topic-output:
+          destination: sample-topic
+server:
+  port: 8080
