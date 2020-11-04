@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: stream-error-handle-sample
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        sample-topic-input:
+          group: ${spring.application.name}
+          destination: sample-topic
+          # 消费异常错误重测，最高 1 次
+          consumer:
+            max-attempts: 1
+        sample-topic-output:
+          destination: sample-topic
+      # 错误信息自动重新入队
+      rabbit:
+        bindings:
+          sample-topic-input:
+            consumer:
+              requeue-rejected: true
+server:
+  port: 8080
