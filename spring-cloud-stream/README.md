@@ -5,5 +5,5 @@
 * stream-group-partition：分区演示；
 
 * stream-condition：消息分流，演示 condtion 使用；
-* stream-error-handle：消费错误处理，包括自动重试、自定义降级、RabbitMQ-QLQ、RabbitMQ 重新入队策略；
+* stream-error-handle：消费错误处理，包括自动重试、自定义降级、RabbitMQ-DLQ、RabbitMQ 重新入队策略；
 
