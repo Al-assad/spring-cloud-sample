@@ -1,0 +1,6 @@
+###
+GET http://localhost:9002/hello/v1/assad
+###
+GET http://localhost:9002/hello/v2/assad
+###
+GET http://localhost:9002/hello/v3/assad
